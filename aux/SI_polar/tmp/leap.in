@@ -1,0 +1,17 @@
+source leaprc.protein.ff19SB
+source leaprc.water.opc
+
+# Load complex 
+mol = loadpdb h5kvd.pdb
+saveamberparm mol dry_ctv.prmtop dry_ctv.rst7
+
+## Now continue as normal
+#charge mol
+#addions2 mol Cl- 0
+#addions2 mol Na+ 0
+#solvateoct mol OPCBOX 10 
+#
+#saveamberparm mol pre_ctv.prmtop ctv.rst7
+#savepdb mol wat_ctv.pdb
+
+quit

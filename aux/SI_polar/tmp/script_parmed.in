@@ -1,0 +1,4 @@
+parm dry_ctv.prmtop
+addPDB h5kvd.pdb
+outparm 5kvd.prmtop
+go

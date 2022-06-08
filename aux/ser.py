@@ -1,6 +1,6 @@
 from pymol.cmd import *
 
-set("sphere_transparency", ".3")
+set("sphere_transparency", ".4")
 set("sphere_scale", ".75")
 set("two_sided_lighting", "on")
 set("reflect", 0)
@@ -28,12 +28,12 @@ color("0x6368c1", "cluster_1")
 
 ser="resi 54+104+56+34+58+53 and chain D"
 asp="resi 401 and chain c"
-ile="resi 402 and chain c"
+asq="resi 402 and chain c"
 glu="resi 404 and chain c"
 show("sticks", ser)
 show("spheres", ser)
 show("sticks", asp)
-show("sticks", ile)
+show("sticks", asq)
 show("sticks", glu)
 
 origin(ser)
@@ -41,9 +41,11 @@ select(ser)
 set_name("sele", "ser")
 select("chain c")
 distance(asp, ser, 4, 2)
-distance(ile, ser, 4, 2)
+distance(asq, ser, 4, 2)
 distance(glu, ser, 4, 2)
 set("label_size", "0")
+set("sphere_transparency", ".1", ser)
+#set("sphere_transparency", ".4", asp+" and "+asq+" and "+glu)
 #
 set_view (\
     '''0.269936740,   -0.946117938,   -0.178835049,\
@@ -53,4 +55,4 @@ set_view (\
    -59.087272644,   23.109546661,   22.004617691,\
      1.796229482,  138.423339844,  -20.000000000''')
 #
-#cmd.png("fig_ser.png", width=500, height=400, dpi=600, ray=1)
+cmd.png("fig_ser.png", width=500, height=400, dpi=600, ray=1)

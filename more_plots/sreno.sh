@@ -9,4 +9,5 @@
 # cp SI_polar_interactions.jpg                                 srenaming/figs11.jpg
 # cp SI_fixwat_only.jpg                                        srenaming/figs12.jpg
 # cp SI_phe_interactions_ratio_inter.jpg                       srenaming/figs14a.jpg
-cp SI_venn_cdr_4.jpg                                           srenaming/figs15.jpg
+# cp SI_venn_cdr_4.jpg                                           srenaming/figs15.jpg
+cp fig_ser.jpg                                           srenaming/figs16.jpg

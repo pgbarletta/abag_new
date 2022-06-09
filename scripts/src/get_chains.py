@@ -14,6 +14,9 @@ casa_dir = (Path(__file__) / '..' / '..' / '..').resolve()
 data_dir = Path.joinpath(casa_dir, "data")
 str_dir = Path.joinpath(casa_dir, "structures/raw")
 
+# utility script to get and write the chainIDs of the antibody and antigen chains.
+# If the raw PDB has more than 1 interface, 
+# then it chooses the chains that correspond to the interface with the most number of atoms
 
 def get_chain_from_biggest_interface(df_pdb):
     top_interface = 0

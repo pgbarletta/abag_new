@@ -1,7 +1,6 @@
 ###
 # Supporting script to get the hydrophobic clusters from the AbAg complexes.
 ###
-
 import logging
 import numpy as np
 import itertools

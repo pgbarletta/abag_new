@@ -1,3 +1,6 @@
+###
+# Script to get the hydrophobic clusters from the AbAg complexes.
+###
 import sys
 from pathlib import Path
 import pickle

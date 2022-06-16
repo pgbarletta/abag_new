@@ -1,3 +1,6 @@
+###
+# Script to get the pi ion (Arg/Lys - Glu/Asp) interactions between the Ab and the Ag.
+###
 import sys
 from pathlib import Path
 import itertools

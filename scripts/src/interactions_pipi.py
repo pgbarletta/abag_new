@@ -1,3 +1,6 @@
+###
+# Script to get the pi stacking interactions between the Ab and the Ag.
+###
 import sys
 from pathlib import Path
 import itertools

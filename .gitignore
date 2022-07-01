@@ -1,3 +1,6 @@
 __*
 .*
 !.gitignore
+structures/
+*.pickle
+hbplus

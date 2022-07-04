@@ -20,8 +20,20 @@ str_dir = Path.joinpath(casa_dir, "structures/raw")
 exposed_dir = Path.joinpath(casa_dir, "structures/exposed")
 
 # Get all atoms from the interface given by NanoShaper.
+###
+# WATCH OUT: the output from this script is not the exact interfacing atoms.
+# But an expansion of it.
+# If 1 residue has 1 atom involved in the interface, all its atoms will be added.
+# And if a residue has a non-canonical resSeq with a character (eg: 100B), then
+# all the atoms from all residues with the the same resSeq number will also
+# be added (eg: 100, 100A, 100B, ...). That's why the namedtuple `Atom` makes
+# a distinction between `resSeq` and `resSeq_str`, the last one is guaranteed
+# to be unique, but there may be many consecutive residues with the same `resSeq`
+###
 
 # Get a reference to each of the mdtraj chains
+
+
 def get_chains(topologia, ab_chains, ag_chains):
     cadenas = {}
     try:
@@ -87,7 +99,8 @@ def get_cdr_from_residue(epitope_buried_cleaned, pdb_idcode, chain_type, residue
     return cdr
 
 
-def get_atoms_from_rows(pdb_idcode, epitope_buried_cleaned, atomic_lines, cadenas, chain_types):
+def get_atoms_from_rows(
+        pdb_idcode, epitope_buried_cleaned, atomic_lines, cadenas, chain_types):
     alfabeto = tuple([""] + list(string.ascii_uppercase))
     set_of_residues = set()
     atoms = {}
@@ -133,7 +146,8 @@ def get_atoms_from_rows(pdb_idcode, epitope_buried_cleaned, atomic_lines, cadena
             if unique_residue_id in set_of_residues:
                 continue
             set_of_residues.add(unique_residue_id)
-            residue = next(resi for resi in cadenas[chainID].residues if resi.resSeq == resSeq)
+            residue = next(
+                resi for resi in cadenas[chainID].residues if resi.resSeq == resSeq)
             cdr = get_cdr_from_residue(
                 epitope_buried_cleaned, pdb_idcode, chain_types[chainID], residue)
             for atom in residue.atoms:
@@ -177,7 +191,8 @@ if __name__ == '__main__':
         ag_chains = chains[pdb_idcode].antigen
 
         cadenas = get_chains(trj_in.topology, ab_chains, ag_chains)
-        chain_types = get_chain_types(epitope_buried_cleaned, pdb_idcode, ab_chains, ag_chains)
+        chain_types = get_chain_types(
+            epitope_buried_cleaned, pdb_idcode, ab_chains, ag_chains)
 
         # `buried_interface_res` has 1 row per interface. In case there's more than one,
         # I use the heavy chain (ab_chains[0]) to identify the one I'm care about.

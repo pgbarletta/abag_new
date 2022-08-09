@@ -15,8 +15,9 @@ data_dir = Path.joinpath(casa_dir, "data")
 str_dir = Path.joinpath(casa_dir, "structures/raw")
 
 # utility script to get and write the chainIDs of the antibody and antigen chains.
-# If the raw PDB has more than 1 interface, 
+# If the raw PDB has more than 1 interface,
 # then it chooses the chains that correspond to the interface with the most number of atoms
+
 
 def get_chain_from_biggest_interface(df_pdb):
     top_interface = 0
@@ -69,7 +70,7 @@ if __name__ == '__main__':
             AG_chain_a = pdb_filename[16]
             AG_chain_b = pdb_filename[17]
             # Thank god the antigen can have up to 5 chains,
-            # or else I'd have to actually code right
+            # or else I'd have to actually code properly.
             AG_chain_c = pdb_filename[18] if pdb_filename[18].isupper() else '.'
             AG_chain_d = pdb_filename[19] if pdb_filename[19].isupper() else '.'
             AG_chain_e = pdb_filename[20] if pdb_filename[20].isupper() else '.'
